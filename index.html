@@ -137,7 +137,8 @@
             white-space: nowrap;
             font-weight: bold;
             text-transform: uppercase;
-            border-y: 3px solid var(--dark);
+            border-bottom: 3px solid var(--dark);
+            border-top: 3px solid var(--dark);
         }
 
         .ticker {
@@ -253,18 +254,26 @@
             z-index: 5;
         }
 
-        .product-img-placeholder {
+        /* Image Display Box Updates */
+        .product-img-box {
             height: 280px;
-            background: linear-gradient(45deg, #dfe4ea, #f1f2f6);
+            background: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 6rem;
-            transition: transform 0.3s;
+            overflow: hidden;
+            padding: 15px;
         }
 
-        .product-card:hover .product-img-placeholder {
-            transform: scale(1.05);
+        .product-img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-img-box img {
+            transform: scale(1.08);
         }
 
         .product-info {
@@ -377,6 +386,31 @@
             border-bottom: 1px solid var(--light);
         }
 
+        /* Custom Fast Toast Notification Popup */
+        .custom-toast-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(30, 34, 43, 0.95);
+            color: #eccc68;
+            padding: 20px 30px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #ff4757;
+            z-index: 9999;
+            pointer-events: none;
+            animation: popupIn 0.1s ease-out;
+        }
+
+        @keyframes popupIn {
+            from { transform: translate(-50%, -40%) scale(0.9); opacity: 0; }
+            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
         /* --- Footer & Contact Zone --- */
         footer {
             background: var(--dark);
@@ -394,30 +428,6 @@
             border: 2px dashed rgba(255, 236, 104, 0.4);
             backdrop-filter: blur(10px);
         }
-        .custom-toast-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(30, 34, 43, 0.95);
-    color: #eccc68; /* Golden Accent Text */
-    padding: 20px 30px;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 2px solid #ff4757;
-    z-index: 9999;
-    pointer-events: none; /* Stops it from blocking clicks */
-    animation: popupIn 0.1s ease-out;
-}
-
-@keyframes popupIn {
-    from { transform: translate(-50%, -40%) scale(0.9); opacity: 0; }
-    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-}
-        
 
         .contact-box h2 {
             color: var(--secondary);
@@ -452,7 +462,7 @@
                 font-size: 1.4rem;
             }
             nav a {
-                display: none; /* Simplifies nav for mobile */
+                display: none;
             }
             .hero h1 {
                 font-size: 2.4rem;
@@ -501,7 +511,7 @@
             <span>⚡ LUX COZI PARODY: "Apna Luck Pehno, Aman Bhai's Selection!"</span>
             <span>💎 AMUL MACHO PARODY: "Bade Aaram Se, Shipped by Ayan!"</span>
             <span>🔥 CALVIN KLEIN PARODY: "Our Fit or Nothing At All!"</span>
-            <span>¼ JOCKEY PARODY: "Jhangia Palace or Nothing Next to You!"</span>
+            <span>✨ JOCKEY PARODY: "Jhangia Palace or Nothing Next to You!"</span>
         </div>
     </div>
 
@@ -527,46 +537,52 @@
         <p class="section-subtitle">Premium imports optimized carefully for casual and elite relaxation.</p>
         
         <div class="products-grid">
-            <!-- Item 1 -->
+            <!-- Item 1 using Link 1 -->
             <div class="product-card">
                 <div class="tag">Dubai Premium Hub</div>
-                <div class="product-img-placeholder">🩲</div>
+                <div class="product-img-box">
+                    <img src="https://www.google.com/aclk?sa=L&ai=DChsSEwi7i6G5vpqVAxUSp2YCHUiaBkQYACICCAEQAxoCc20&co=1&ase=2&gclid=CjwKCAjwuuPRBhAnEiwA2Ji8euGKB7Gnvb5P5D50n9AdP6eEbkboJhM-y42BOy_nN8atwwZBAdWP2BoCnogQAvD_BwE&cid=CAAS0gHkaPSHNTeO1t9L2JhoeMK6TGdjNnK_d2Qk7PGp-wlqT1iTO5AjnJGAOxD8RcEXMLbdmG4JCNIXcoSd4SUZRkKGVfmY86qdTINz5gNwzoZrnkX6aMLYAivwsvNQMFb3HXSXCoqWCxQne2zdBEgYyDSzk_beni7PdzsZl6h94WwfvoRrkFAaX_luTnkRiXCnQFHonSM_J-K20uEmIh8rLROCUYEyrE4EIFeQXQgX8bIgpPP6SjqVJYIQJyfvqGYP751WJmuLIA9t7ZvOhLawyvz7t94&cce=2&category=acrcp_v1_33&sig=AOD64_3oAaABicb_KUj0dgkjTgFB76rhhQ&ctype=70&q=&nis=4&ved=2ahUKEwi-zJu5vpqVAxXR4DgGHQmaMKQQwg8oAHoECAcQEg&adurl=" alt="Habibi Desert Gold Boxers">
+                </div>
                 <div class="product-info">
                     <div class="product-slogan">"The Real Silk Feel"</div>
                     <h3>Habibi Desert Gold Boxers</h3>
                     <p>Super soft breathability tailored for rich, everyday elite style comfort.</p>
                     <div class="product-price-row">
-                        <div class="product-price">AED 149</div>
+                        <div class="product-price">₹149</div>
                         <button class="btn-buy" onclick="addToCart('Habibi Desert Gold Boxers', 149)">Add To Bag</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Item 2 -->
+            <!-- Item 2 using Link 2 -->
             <div class="product-card">
                 <div class="tag">Ayan's Choice Aero</div>
-                <div class="product-img-placeholder">🩲</div>
+                <div class="product-img-box">
+                    <img src="https://www.google.com/aclk?sa=L&ai=DChsSEwjrrqf1vpqVAxXlGYMDHVCUGPsYACICCAEQBRoCc2Y&co=1&ase=2&gclid=CjwKCAjwuuPRBhAnEiwA2Ji8ejcqvCRt6BNXn3wz660jU8qDS_UjS5g_sSuhyYeNEdo-q9LqF8BlRxoCGlwQAvD_BwE&cid=CAAS0gHkaCAdYrOchixwbbq7_cxUVlnbGgwkQ3vDj0FrnenYvToqRCcxop5uknaBA9chXrsE7n0Ooqic_BKx8v7sVJHlPo9i-SdYrzos7U7nzpM7LP8-IFIWV_iC1wgtuOpNzCUXl-1QNscVh9_2JhtBnDh44FPjgzKVagztQRVM8amBRny-DnP9V2N9fHLmHfA4ymQVeRyjpiLc7Ab3Pr5aFsi6AWi5vJOyc_6Dl8z-gEBQGSxwuI6dJVcQtM-BhQQoTQNKsHZateEwJVxAFBGgba0j26s&cce=2&category=acrcp_v1_33&sig=AOD64_3sJBNaIKULfu24UCWJiz3x7VhIaQ&ctype=70&q=&nis=4&ved=2ahUKEwiMyaL1vpqVAxV23TgGHSqwIXYQwg8oAHoECAgQFg&adurl=" alt="Super Fast Aero-Flex Briefs">
+                </div>
                 <div class="product-info">
                     <div class="product-slogan">"Bade Aaram Se"</div>
                     <h3>Super Fast Aero-Flex Briefs</h3>
                     <p>Designed for fast runs and high active moments. Built to never lose balance.</p>
                     <div class="product-price-row">
-                        <div class="product-price">AED 89</div>
+                        <div class="product-price">₹890</div>
                         <button class="btn-buy" onclick="addToCart('Super Fast Aero-Flex Briefs', 89)">Add To Bag</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Item 3 -->
+            <!-- Item 3 using Link 3 -->
             <div class="product-card">
                 <div class="tag">Zaid Approved Fit</div>
-                <div class="product-img-placeholder">🩲</div>
+                <div class="product-img-box">
+                    <img src="https://www.google.com/aclk?sa=L&ai=DChsSEwiSvb2Wv5qVAxXTqksFHUtcO7IYACICCAEQAxoCc2Y&co=1&ase=2&gclid=CjwKCAjwuuPRBhAnEiwA2Ji8epSROuig_v1FnQOPrmGNOLJsJvQgtD2lbHUXuz9ORIw3BwOOt5SlfRoCKtsQAvD_BwE&cid=CAAS0gHkaD3NhBhkwkcyLNKkqqS3R2NyJuWtBt8C4GYIrq85a0C_u_BbhqCWHZ_nfTB7SsjW5b4Vhs_P5Z2RZ-O3kOPv-C7C-mfuhyIzneMzkuqYtwVExS6jA_pskMA8AHUI4AL9ZGhoZyg2y0B0fb-UJtgoIaOFR4Ae_1M9LVE9RH58XzmHlCAzeQfGDgNaSbHwuDFasb5vO0MA6ChkrXNO9jJxXpA218EvY0Ue6PusUdbFBuVjyHkBStcxuUPXyssgFgZOYi7PNlOVWAChbWfT2HN5Zww&cce=2&category=acrcp_v1_33&sig=AOD64_25fPZ4bagKP18cvXA0fCxZSoHF8Q&ctype=70&q=&nis=4&ved=2ahUKEwimlrmWv5qVAxXcn2MGHe6ZKqsQwg8oAHoECAkQEg&adurl=" alt="Classic Sanskari Cotton Trunk">
+                </div>
                 <div class="product-info">
                     <div class="product-slogan">"Inside Is Outright Comfort"</div>
                     <h3>Classic Sanskari Cotton Trunk</h3>
                     <p>Traditional high grade long lasting cotton fit featuring a hidden mini storage pocket.</p>
                     <div class="product-price-row">
-                        <div class="product-price">AED 115</div>
+                        <div class="product-price">A ₹1150</div>
                         <button class="btn-buy" onclick="addToCart('Classic Sanskari Cotton Trunk', 115)">Add To Bag</button>
                     </div>
                 </div>
@@ -584,7 +600,7 @@
             <p style="text-align: center; color: #888; margin-top: 30px;">Cart is currently empty. Don't let Aman Bhai down!</p>
         </div>
         <div style="border-top: 2px solid var(--light); padding-top: 1.5rem;">
-            <h3 style="display: flex; justify-content: space-between;"><span>Grand Total:</span> <span>AED <span id="cartTotal">0</span></span></h3>
+            <h3 style="display: flex; justify-content: space-between;"><span>Grand Total:</span> <span>₹<span id="cartTotal">0</span></span></h3>
             <button class="btn-buy" style="width: 100%; margin-top: 15px; background: var(--accent);" onclick="triggerCheckout()">Proceed To Zaid Bhai's Desk</button>
         </div>
     </div>
@@ -610,23 +626,22 @@
         }
 
         function addToCart(itemName, itemPrice) {
-    shoppingCart.push({ name: itemName, price: itemPrice });
-    renderCartUpdates();
-    
-    // 1. Create the temporary popup element
-    const popup = document.createElement('div');
-    popup.className = 'custom-toast-popup';
-    popup.innerHTML = `✅ Added "${itemName}" safely! Ayan Bhai is already packing your crate!`;
-    
-    // 2. Append it to the page body
-    document.body.appendChild(popup);
-    
-    // 3. Automatically remove it after exactly 200 milliseconds
-    setTimeout(() => {
-        popup.remove();
-    }, 200);
-}
-
+            shoppingCart.push({ name: itemName, price: itemPrice });
+            renderCartUpdates();
+            
+            // 1. Create the temporary popup element
+            const popup = document.createElement('div');
+            popup.className = 'custom-toast-popup';
+            popup.innerHTML = `✅ Added "${itemName}" safely! Ayan Bhai is already packing your crate!`;
+            
+            // 2. Append it to the page body
+            document.body.appendChild(popup);
+            
+            // 3. Automatically remove it after exactly 200 milliseconds
+            setTimeout(() => {
+                popup.remove();
+            }, 200);
+        }
 
         function renderCartUpdates() {
             document.getElementById('cart-count').innerText = shoppingCart.length;
@@ -650,7 +665,7 @@
                             <small style="color:var(--primary)">Dubai Collection</small>
                         </div>
                         <div style="display:flex; align-items:center; gap:10px;">
-                            <strong>AED ${element.price}</strong>
+                            <strong>₹${element.price}</strong>
                             <span style="color:#ff4757; cursor:pointer; font-size:1.2rem;" onclick="dropItem(${position})">🗑️</span>
                         </div>
                     </div>
@@ -669,7 +684,13 @@
 
         function triggerCheckout() {
             if (shoppingCart.length === 0) {
-                alert("Please add an item before processing! Aman Bhai hates shipping empty boxes!");
+                // Creates a short popup warning instead of browser alert
+                const errorPopup = document.createElement('div');
+                errorPopup.className = 'custom-toast-popup';
+                errorPopup.style.borderColor = '#ffa502';
+                errorPopup.innerHTML = "Aman Bhai hates shipping empty boxes! Add items first.";
+                document.body.appendChild(errorPopup);
+                setTimeout(() => { errorPopup.remove(); }, 1200);
                 return;
             }
             alert("🚀 Order details logged successfully! Your manifest is forwarded directly to Zaid Bhai. Ayan Bhai is pulling up the transport delivery vehicle!");
@@ -680,4 +701,3 @@
     </script>
 </body>
 </html>
-
