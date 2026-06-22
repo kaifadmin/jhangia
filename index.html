@@ -394,6 +394,30 @@
             border: 2px dashed rgba(255, 236, 104, 0.4);
             backdrop-filter: blur(10px);
         }
+        .custom-toast-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(30, 34, 43, 0.95);
+    color: #eccc68; /* Golden Accent Text */
+    padding: 20px 30px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 2px solid #ff4757;
+    z-index: 9999;
+    pointer-events: none; /* Stops it from blocking clicks */
+    animation: popupIn 0.1s ease-out;
+}
+
+@keyframes popupIn {
+    from { transform: translate(-50%, -40%) scale(0.9); opacity: 0; }
+    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+        
 
         .contact-box h2 {
             color: var(--secondary);
@@ -586,12 +610,23 @@
         }
 
         function addToCart(itemName, itemPrice) {
-            shoppingCart.push({ name: itemName, price: itemPrice });
-            renderCartUpdates();
-            
-            // Interactive micro-alert notification
-            alert(`✅ Added "${itemName}" safely! Ayan Bhai is already packing your crate!`);
-        }
+    shoppingCart.push({ name: itemName, price: itemPrice });
+    renderCartUpdates();
+    
+    // 1. Create the temporary popup element
+    const popup = document.createElement('div');
+    popup.className = 'custom-toast-popup';
+    popup.innerHTML = `✅ Added "${itemName}" safely! Ayan Bhai is already packing your crate!`;
+    
+    // 2. Append it to the page body
+    document.body.appendChild(popup);
+    
+    // 3. Automatically remove it after exactly 200 milliseconds
+    setTimeout(() => {
+        popup.remove();
+    }, 200);
+}
+
 
         function renderCartUpdates() {
             document.getElementById('cart-count').innerText = shoppingCart.length;
