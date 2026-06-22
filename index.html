@@ -1,1 +1,648 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhangia Palace - Premium Hinglish Comfort</title>
+    <style>
+        :root {
+            --primary: #ff4757;
+            --secondary: #eccc68;
+            --dark: #1e222b;
+            --light: #f1f2f6;
+            --accent: #2ed573;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* --- Animations --- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 71, 87, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(255, 71, 87, 0.9); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .cart-icon {
+            background: var(--primary);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+            animation: pulse-glow 2s infinite;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, #1e222b 0%, #ff4757 100%);
+            color: white;
+            padding: 8rem 2rem 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            animation: slideIn 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+            color: var(--secondary);
+        }
+
+        .floating-jhangia {
+            font-size: 5rem;
+            display: inline-block;
+            animation: float 4s ease-in-out infinite;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Slogan Ticker (Parody Brands) --- */
+        .ticker-wrap {
+            background: #ff7f50;
+            color: white;
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-y: 3px solid var(--dark);
+        }
+
+        .ticker {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+        }
+
+        .ticker span {
+            margin-right: 50px;
+            font-size: 1.1rem;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* --- The Core Team Pillars --- */
+        .team-banners {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: -50px auto 40px auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .badge-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-top: 5px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .badge-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .badge-card h3 {
+            color: var(--dark);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .badge-card p {
+            font-size: 0.95rem;
+            color: #57606f;
+            line-height: 1.5;
+        }
+
+        .highlight-name {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* --- Product Catalog --- */
+        .products-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #747d8c;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(255, 47, 87, 0.15);
+        }
+
+        .tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--dark);
+            color: var(--secondary);
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 30px;
+            z-index: 5;
+        }
+
+        .product-img-placeholder {
+            height: 280px;
+            background: linear-gradient(45deg, #dfe4ea, #f1f2f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-img-placeholder {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-slogan {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .product-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .product-info p {
+            color: #747d8c;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            height: 44px;
+            overflow: hidden;
+        }
+
+        .product-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .product-price {
+            font-size: 1.6rem;
+            color: var(--dark);
+            font-weight: 800;
+        }
+
+        .btn-buy {
+            background: var(--dark);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-buy:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* --- Slide-out Cart Sidebar --- */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 450px;
+            max-width: 100%;
+            height: 100%;
+            background: white;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.25);
+            z-index: 2000;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 1.5rem;
+        }
+
+        .close-cart {
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .close-cart:hover {
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1.5rem 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light);
+        }
+
+        /* --- Footer & Contact Zone --- */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            max-width: 650px;
+            margin: 0 auto 3rem auto;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            border: 2px dashed rgba(255, 236, 104, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-box h2 {
+            color: var(--secondary);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(46, 213, 115, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* --- Mobile Responsiveness Media Queries --- */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            .logo {
+                font-size: 1.4rem;
+            }
+            nav a {
+                display: none; /* Simplifies nav for mobile */
+            }
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .team-banners {
+                margin-top: 20px;
+                padding: 1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .cart-modal {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo" onclick="window.scrollTo(0,0)">🩲 Jhangia Palace</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#bhai-collection">Bhai's Collection</a>
+            <a href="#zaid-helpline">Contact Zaid</a>
+            <span class="cart-icon" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</span>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-jhangia">🩲</div>
+        <h1>Pure Comfort, No Compromise!</h1>
+        <p>Breathe easy with the royal fit. Sasti tikau, sabse aage aur sabse unique!</p>
+    </section>
+
+    <!-- Parody Slogan Infinite Marquee Ticker -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span>🔥 CALVIN KLEIN PARODY: "Our Fit or Nothing At All!"</span>
+            <span>✨ JOCKEY PARODY: "Jhangia Palace or Nothing Next to You!"</span>
+            <span>⚡ LUX COZI PARODY: "Apna Luck Pehno, Aman Bhai's Selection!"</span>
+            <span>💎 AMUL MACHO PARODY: "Bade Aaram Se, Shipped by Ayan!"</span>
+            <span>🔥 CALVIN KLEIN PARODY: "Our Fit or Nothing At All!"</span>
+            <span>¼ JOCKEY PARODY: "Jhangia Palace or Nothing Next to You!"</span>
+        </div>
+    </div>
+
+    <!-- The Brotherhood Pillars (Aman, Ayan, Zaid) -->
+    <section class="team-banners">
+        <div class="badge-card">
+            <h3>✈️ Dubai's Luxury Special</h3>
+            <p>Directly sourced, curated, and dynamic collection approval done by none other than <span class="highlight-name">Aman Bhai</span>. Standard high quality guaranteed.</p>
+        </div>
+        <div class="badge-card">
+            <h3>📦 Express Bullet Dispatch</h3>
+            <p>Your dynamic ordering gets carefully packed and bullet-speed shipped right out of transit systems by <span class="highlight-name">Ayan Bhai</span>.</p>
+        </div>
+        <div class="badge-card">
+            <h3>💬 24/7 Order & Fit Hotline</h3>
+            <p>Stuck with order updates or sizes? Directly ping and coordinate operations with <span class="highlight-name">Zaid Bhai</span> for instant tracking.</p>
+        </div>
+    </section>
+
+    <!-- Main Dynamic Products Grid -->
+    <section class="products-section" id="bhai-collection">
+        <h2 class="section-title">Aman Bhai's Special Drop</h2>
+        <p class="section-subtitle">Premium imports optimized carefully for casual and elite relaxation.</p>
+        
+        <div class="products-grid">
+            <!-- Item 1 -->
+            <div class="product-card">
+                <div class="tag">Dubai Premium Hub</div>
+                <div class="product-img-placeholder">🩲</div>
+                <div class="product-info">
+                    <div class="product-slogan">"The Real Silk Feel"</div>
+                    <h3>Habibi Desert Gold Boxers</h3>
+                    <p>Super soft breathability tailored for rich, everyday elite style comfort.</p>
+                    <div class="product-price-row">
+                        <div class="product-price">AED 149</div>
+                        <button class="btn-buy" onclick="addToCart('Habibi Desert Gold Boxers', 149)">Add To Bag</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="product-card">
+                <div class="tag">Ayan's Choice Aero</div>
+                <div class="product-img-placeholder">🩲</div>
+                <div class="product-info">
+                    <div class="product-slogan">"Bade Aaram Se"</div>
+                    <h3>Super Fast Aero-Flex Briefs</h3>
+                    <p>Designed for fast runs and high active moments. Built to never lose balance.</p>
+                    <div class="product-price-row">
+                        <div class="product-price">AED 89</div>
+                        <button class="btn-buy" onclick="addToCart('Super Fast Aero-Flex Briefs', 89)">Add To Bag</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="product-card">
+                <div class="tag">Zaid Approved Fit</div>
+                <div class="product-img-placeholder">🩲</div>
+                <div class="product-info">
+                    <div class="product-slogan">"Inside Is Outright Comfort"</div>
+                    <h3>Classic Sanskari Cotton Trunk</h3>
+                    <p>Traditional high grade long lasting cotton fit featuring a hidden mini storage pocket.</p>
+                    <div class="product-price-row">
+                        <div class="product-price">AED 115</div>
+                        <button class="btn-buy" onclick="addToCart('Classic Sanskari Cotton Trunk', 115)">Add To Bag</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide-out Shopping Cart View -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h2>Your Cart Balance</h2>
+            <span class="close-cart" onclick="toggleCart()">❌</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p style="text-align: center; color: #888; margin-top: 30px;">Cart is currently empty. Don't let Aman Bhai down!</p>
+        </div>
+        <div style="border-top: 2px solid var(--light); padding-top: 1.5rem;">
+            <h3 style="display: flex; justify-content: space-between;"><span>Grand Total:</span> <span>AED <span id="cartTotal">0</span></span></h3>
+            <button class="btn-buy" style="width: 100%; margin-top: 15px; background: var(--accent);" onclick="triggerCheckout()">Proceed To Zaid Bhai's Desk</button>
+        </div>
+    </div>
+
+    <!-- Contact & Footer Section -->
+    <footer id="zaid-helpline">
+        <div class="contact-box">
+            <h2>Order Booking & Support Hub</h2>
+            <p>Every single transaction undergoes active monitoring. For specialized order customs, bulk tracking, or instant questions, contact operations manager directly:</p>
+            <h3 style="font-size: 2rem; color: #fff; margin: 15px 0; letter-spacing: 1px;">👑 ZAID BHAI VIP HELPLINE</h3>
+            <p style="color: var(--secondary); font-size: 0.95rem;">⚡ Package transport and logistics directly monitored safely by Ayan Bhai.</p>
+            <a href="https://wa.me/#" target="_blank" class="whatsapp-btn">💬 Ping Zaid Bhai Directly</a>
+        </div>
+        <p style="font-size: 0.9rem; color: #a4b0be;">&copy; 2026 Jhangia Palace. Authentically established worldwide by Aman, Ayan & Zaid Logistics Network.</p>
+    </footer>
+
+    <!-- Functional Component Scripts -->
+    <script>
+        let shoppingCart = [];
+
+        function toggleCart() {
+            document.getElementById('cartModal').classList.toggle('active');
+        }
+
+        function addToCart(itemName, itemPrice) {
+            shoppingCart.push({ name: itemName, price: itemPrice });
+            renderCartUpdates();
+            
+            // Interactive micro-alert notification
+            alert(`✅ Added "${itemName}" safely! Ayan Bhai is already packing your crate!`);
+        }
+
+        function renderCartUpdates() {
+            document.getElementById('cart-count').innerText = shoppingCart.length;
+            const container = document.getElementById('cartItems');
+            const totalContainer = document.getElementById('cartTotal');
+            
+            if (shoppingCart.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #888; margin-top: 30px;">Cart is currently empty. Don\'t let Aman Bhai down!</p>';
+                totalContainer.innerText = '0';
+                return;
+            }
+
+            let computedHtml = '';
+            let cumulativeSum = 0;
+
+            shoppingCart.forEach((element, position) => {
+                computedHtml += `
+                    <div class="cart-item">
+                        <div>
+                            <h4 style="font-size:1.05rem;">${element.name}</h4>
+                            <small style="color:var(--primary)">Dubai Collection</small>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <strong>AED ${element.price}</strong>
+                            <span style="color:#ff4757; cursor:pointer; font-size:1.2rem;" onclick="dropItem(${position})">🗑️</span>
+                        </div>
+                    </div>
+                `;
+                cumulativeSum += element.price;
+            });
+
+            container.innerHTML = computedHtml;
+            totalContainer.innerText = cumulativeSum;
+        }
+
+        function dropItem(position) {
+            shoppingCart.splice(position, 1);
+            renderCartUpdates();
+        }
+
+        function triggerCheckout() {
+            if (shoppingCart.length === 0) {
+                alert("Please add an item before processing! Aman Bhai hates shipping empty boxes!");
+                return;
+            }
+            alert("🚀 Order details logged successfully! Your manifest is forwarded directly to Zaid Bhai. Ayan Bhai is pulling up the transport delivery vehicle!");
+            shoppingCart = [];
+            renderCartUpdates();
+            toggleCart();
+        }
+    </script>
+</body>
+</html>
+
